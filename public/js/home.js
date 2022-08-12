@@ -102,6 +102,7 @@ const getTasks = (list, completed) => {
 };
 
 const filterTasks = () => {
+    document.querySelector('#addTaskBtn').innerHTML = 'Add Task';
     document.querySelector('#filterSpinner').removeAttribute('hidden');
     if(taskFilterSelect.value === 'all'){
         return getTasks(taskList);
@@ -139,7 +140,6 @@ addTaskForm.addEventListener('submit', (event) => {
     }).then((response) => {
         if(response.ok){
             description.value = '';
-            document.querySelector('#addTaskBtn').innerHTML = 'Add Task';
             filterTasks();
         }else{
             window.location.reload();
