@@ -102,7 +102,6 @@ const getTasks = (list, completed) => {
 };
 
 const filterTasks = () => {
-    document.querySelector('#addTaskBtn').innerHTML = 'Add Task';
     document.querySelector('#filterSpinner').removeAttribute('hidden');
     if(taskFilterSelect.value === 'all'){
         return getTasks(taskList);
@@ -122,8 +121,6 @@ filterTasks();
 // Adding Task
 addTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
-
-    document.querySelector('#addTaskBtn').innerHTML = 'Adding...';
 
     const description = document.querySelector('#taskDesc');
     const task = {
