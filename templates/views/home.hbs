@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+    <link rel="shortcut icon" href="#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="images/todo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    {{>navbar}}
+    <section style="margin-top: 2vh; margin-left: 29vh;">
+      <h2>What's up, {{name}}</h2>
+    </section>
+
+    <section class="vh-50">
+        <div class="container py-2 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-12">
+
+                <div class="card-body py-2 px-0">
+                    <h4 style="font-weight: 400;">CREATE A TODO</h4>
+                    <p style="font-weight: 700; color: rgb(95, 88, 88);">Whats on your todo list?</p>
+                    <form class="d-flex justify-content-center align-items-center mb-4" id="addTaskFrm">
+                    <div class="form-outline flex-fill" style="margin-right: 2vh;" >
+                        <input type="text" id="taskDesc" class="form-control" placeholder="e.g., buy some milk..." required/>
+                    </div>
+                    <input type="submit" id="addTaskBtn" value="Add Task" class="btn btn-info" >
+                    {{!-- <button type="submit" id="addTaskBtn" class="btn btn-info">Add Task</button> --}}
+                    </form>
+
+                    <h4 class="mb-3" style="font-weight: 400;">TODO LIST</h4>
+                    <hr>
+                    
+                    <div id="taskFilter" class="d-flex justify-content-start align-items-center mb-3 pt-2 pb-3">
+                        <p class="small mb-0 m-1 text-muted" style="font-size: 1rem; font-weight: 700;">Filter</p>
+                        <select id="taskFilterSelect" class="select ml-2" onchange="filterTasks()">
+                            <option value="all">All Tasks</option>
+                            <option value="active">Active Tasks</option>
+                            <option value="completed">Completed Tasks</option>
+                        </select>
+                    </div>
+
+                    <div class="tab-content" id="ex1-content" style="margin-top: 4vh;" hidden>
+                        <h5 id="activeHeader" class="text-center justify-content-center align-content-center" hidden>All Tasks are completed.</h5>
+                        <h5 id="completedHeader" class="text-center justify-content-center align-content-center" hidden>None of the tasks has been completed.</h5>
+                        <ul id="taskList" class="list-group mb-0">
+                            {{!-- <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded" style="background-color: #f4f6f7;">
+                                <input id="taskCheck" class="form-check-input ml-1" style="transform: scale(1.25);" type="checkbox" value="" aria-label="..."/>
+                                <input id="taskInput" type="text" class="ml-4 taskText" name="todo" value="Hello" readonly>
+                                <button class="btn btn-dark ml-auto" id="editTask">Edit</button>
+                                <button class="btn btn-danger ml-2" id="deleteTask">Delete</button>
+                            </li> --}}
+                        </ul>
+                    </div>
+
+                    <div id="noTasks" hidden>
+                        <h5>Tasks not added yet!</h5>
+                        <h6>Add new tasks.</h6>
+                    </div>
+
+                </div>
+                
+
+            </div>
+            </div>
+        </div>
+        </section>
+
+    <script src="js/home.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/home">To-Do App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="col-auto">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item {{#if home}} active {{/if}}">
+                <a class="nav-link" href="/home">Home</a>
+              </li>
+              <li class="nav-item {{#if updateProfile}} active {{/if}}">
+                <a class="nav-link" href="/update">Update Profile</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" id="deleteProfile" href="#">Delete Profile</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" id="logOut" href="#">Logout</a>
+                  <a class="dropdown-item" id="logOutAll" href="#">Logout From All Devices</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
