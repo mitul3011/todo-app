@@ -222,7 +222,7 @@ const deleteTask = (btn) => {
 
 // Logout function
 logOutBtn.addEventListener('click', () => {
-    document.querySelector('#logoutSpinner').removeAttribute('hidden');
+    document.querySelector('#commonSpinner').removeAttribute('hidden');
     fetch('/logout', {
         method: 'POST'
     }).then((response) => {
@@ -236,7 +236,7 @@ logOutBtn.addEventListener('click', () => {
 
 // Logout from All Devices function
 logOutAllBtn.addEventListener('click', () => {
-    document.querySelector('#logoutAllSpinner').removeAttribute('hidden');
+    document.querySelector('#commonSpinner').removeAttribute('hidden');
     fetch('/logoutall', {
         method: 'POST'
     }).then((response) => {
@@ -250,7 +250,7 @@ logOutAllBtn.addEventListener('click', () => {
 
 // Delete Profile function
 deleteButton.addEventListener('click', () => {
-    document.querySelector('#deleteSpinner').removeAttribute('hidden');
+    document.querySelector('#commonSpinner').removeAttribute('hidden');
     fetch('/deletePro', {
         method: 'DELETE'
     }).then((response) => {

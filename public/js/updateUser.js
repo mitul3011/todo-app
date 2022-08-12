@@ -87,7 +87,7 @@ signupForm.addEventListener('submit', (event) => {
 });
 
 logOutBtn.addEventListener('click', () => {
-    document.querySelector('#logoutSpinner').removeAttribute('hidden');
+    document.querySelector('#commonSpinner').removeAttribute('hidden');
     fetch('/logout', {
         method: 'POST'
     }).then((response) => {
@@ -101,7 +101,7 @@ logOutBtn.addEventListener('click', () => {
 });
 
 logOutAllBtn.addEventListener('click', () => {
-    document.querySelector('#logoutAllSpinner').removeAttribute('hidden');
+    document.querySelector('#commonSpinner').removeAttribute('hidden');
     fetch('/logoutall', {
         method: 'POST'
     }).then((response) => {
@@ -115,7 +115,7 @@ logOutAllBtn.addEventListener('click', () => {
 });
 
 deleteButton.addEventListener('click', () => {
-    document.querySelector('#deleteSpinner').removeAttribute('hidden');
+    document.querySelector('#commonSpinner').removeAttribute('hidden');
     fetch('/deletePro', {
         method: 'DELETE'
     }).then((response) => {
