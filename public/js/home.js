@@ -49,6 +49,9 @@ const renderTasks = (list, tasks, completed) => {
             <li data-id=${task._id} class="list-group-item d-flex align-items-center border-0 mb-2 rounded" style="background-color: #f4f6f7;">
                 <input id="taskCheck" class="form-check-input ml-1" style="transform: scale(1.25);" type="checkbox" onclick="updateTaskStatus(this);" value="" aria-label="..." checked/>
                 <input id="taskInput${task._id}" type="text" class="ml-4 taskText" name="todo" style="text-decoration: line-through;" value="${task.description}" readonly>
+                <div id="taskSpinner${task._id}" class="spinner-grow ml-2" role="status" hidden>
+                    <span class="sr-only">Loading...</span>
+                </div>
                 <button class="btn btn-dark ml-auto" onclick="updateTaskDesc(this)" id="editTask">Edit</button>
                 <button class="btn btn-danger ml-2" onclick="deleteTask(this)" id="deleteTask">Delete</button>
             </li>
@@ -58,6 +61,9 @@ const renderTasks = (list, tasks, completed) => {
             <li data-id=${task._id} class="list-group-item d-flex align-items-center border-0 mb-2 rounded" style="background-color: #f4f6f7;">
                 <input id="taskCheck" class="form-check-input ml-1" style="transform: scale(1.25);" type="checkbox" onclick="updateTaskStatus(this);" value="" aria-label="..."/>
                 <input id="taskInput${task._id}" type="text" class="ml-4 taskText" name="todo" value="${task.description}" readonly>
+                <div id="taskSpinner${task._id}" class="spinner-grow ml-2" role="status" hidden>
+                    <span class="sr-only">Loading...</span>
+                </div>
                 <button class="btn btn-dark ml-auto" onclick="updateTaskDesc(this)" id="editTask">Edit</button>
                 <button class="btn btn-danger ml-2" onclick="deleteTask(this)" id="deleteTask">Delete</button>
             </li>
@@ -65,6 +71,7 @@ const renderTasks = (list, tasks, completed) => {
         }
     });
     list.innerHTML = output;
+    document.querySelector('#filterSpinner').setAttribute('hidden', '');
 };
 
 // function for fetching tasks from Backend
@@ -95,6 +102,7 @@ const getTasks = (list, completed) => {
 };
 
 const filterTasks = () => {
+    document.querySelector('#filterSpinner').removeAttribute('hidden');
     if(taskFilterSelect.value === 'all'){
         return getTasks(taskList);
     }
@@ -114,6 +122,8 @@ filterTasks();
 addTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    document.querySelector('#addTaskBtn').innerHTML = 'Adding...';
+
     const description = document.querySelector('#taskDesc');
     const task = {
         description: description.value,
@@ -129,6 +139,7 @@ addTaskForm.addEventListener('submit', (event) => {
     }).then((response) => {
         if(response.ok){
             description.value = '';
+            document.querySelector('#addTaskBtn').innerHTML = 'Add Task';
             filterTasks();
         }else{
             window.location.reload();
@@ -139,6 +150,7 @@ addTaskForm.addEventListener('submit', (event) => {
 // Function to update task is either completed or not
 const updateTaskStatus = (cb) => {
     const taskId = cb.parentElement.dataset.id;
+    document.querySelector('#taskSpinner'+taskId).removeAttribute('hidden');
     const update = {
         completed: cb.checked
     };
@@ -161,6 +173,7 @@ const updateTaskStatus = (cb) => {
 // Function to update task description
 const updateTaskDesc = (btn) => {
     const taskId = btn.parentElement.dataset.id;
+
     if(btn.innerHTML === 'Edit'){
         btn.innerHTML = 'Save';
         const taskInput = document.querySelector('#taskInput'+ taskId);
@@ -171,6 +184,7 @@ const updateTaskDesc = (btn) => {
         taskInput.classList.add('taskTextEdit');
     }else{
         btn.innerHTML = 'Edit';
+        document.querySelector('#taskSpinner'+taskId).removeAttribute('hidden');
         const taskInput = document.querySelector('#taskInput'+ taskId);
         taskInput.setAttribute('readonly', '');
         taskInput.classList.remove('taskTextEdit');
@@ -196,6 +210,7 @@ const updateTaskDesc = (btn) => {
 // Function to delete a task
 const deleteTask = (btn) => {
     const taskId = btn.parentElement.dataset.id;
+    document.querySelector('#taskSpinner'+taskId).removeAttribute('hidden');
     
     fetch(url + '/' + taskId, {
         method: 'DELETE'
@@ -210,6 +225,7 @@ const deleteTask = (btn) => {
 
 // Logout function
 logOutBtn.addEventListener('click', () => {
+    document.querySelector('#logoutSpinner').removeAttribute('hidden');
     fetch('/logout', {
         method: 'POST'
     }).then((response) => {
@@ -223,6 +239,7 @@ logOutBtn.addEventListener('click', () => {
 
 // Logout from All Devices function
 logOutAllBtn.addEventListener('click', () => {
+    document.querySelector('#logoutAllSpinner').removeAttribute('hidden');
     fetch('/logoutall', {
         method: 'POST'
     }).then((response) => {
@@ -236,6 +253,7 @@ logOutAllBtn.addEventListener('click', () => {
 
 // Delete Profile function
 deleteButton.addEventListener('click', () => {
+    document.querySelector('#deleteSpinner').removeAttribute('hidden');
     fetch('/deletePro', {
         method: 'DELETE'
     }).then((response) => {
