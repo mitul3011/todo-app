@@ -35,14 +35,14 @@
                     <h4 class="mb-3" style="font-weight: 400;">TODO LIST</h4>
                     <hr>
                     
-                    <div id="taskFilter" class="d-flex justify-content-start align-items-center mb-3 pt-2 pb-3">
+                    <div id="taskFilter" class="d-flex justify-content-start align-items-center mb-3 pt-2 pb-3" hidden>
                         <p class="small mb-0 m-1 text-muted" style="font-size: 1rem; font-weight: 700;">Filter</p>
                         <select id="taskFilterSelect" class="select ml-2" onchange="filterTasks()">
                             <option value="all">All Tasks</option>
                             <option value="active">Active Tasks</option>
                             <option value="completed">Completed Tasks</option>
                         </select>
-                        <div id="filterSpinner" class="spinner-grow ml-2" role="status" hidden>
+                        <div id="filterSpinner" class="spinner-border ml-2" role="status" hidden>
                             <span class="sr-only">Loading...</span>
                         </div>
                     </div>
@@ -51,12 +51,6 @@
                         <h5 id="activeHeader" class="text-center justify-content-center align-content-center" hidden>All Tasks are completed.</h5>
                         <h5 id="completedHeader" class="text-center justify-content-center align-content-center" hidden>None of the tasks has been completed.</h5>
                         <ul id="taskList" class="list-group mb-0">
-                            {{!-- <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded" style="background-color: #f4f6f7;">
-                                <input id="taskCheck" class="form-check-input ml-1" style="transform: scale(1.25);" type="checkbox" value="" aria-label="..."/>
-                                <input id="taskInput" type="text" class="ml-4 taskText" name="todo" value="Hello" readonly>
-                                <button class="btn btn-dark ml-auto" id="editTask">Edit</button>
-                                <button class="btn btn-danger ml-2" id="deleteTask">Delete</button>
-                            </li> --}}
                         </ul>
                     </div>
 
