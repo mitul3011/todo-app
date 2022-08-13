@@ -97,14 +97,17 @@ const getTasks = (list, completed) => {
 
 const filterTasks = () => {
     if(taskFilterSelect.value === 'all'){
+        document.querySelector('#filterSpinner').removeAttribute('hidden');
         return getTasks(taskList);
     }
 
     if(taskFilterSelect.value === 'active'){
+        document.querySelector('#filterSpinner').removeAttribute('hidden');
         return getTasks(taskList, false);
     }
 
     if(taskFilterSelect.value === 'completed'){
+        document.querySelector('#filterSpinner').removeAttribute('hidden');
         return getTasks(taskList, true);
     }
 };
